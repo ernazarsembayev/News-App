@@ -1,14 +1,15 @@
 package com.ernazar.newsapp.domain.usecases
 
-import com.ernazar.newsapp.data.server.response.getArticlesResponse.GetArticlesResponse
+import androidx.paging.PagingData
+import com.ernazar.newsapp.data.model.Article
 import com.ernazar.newsapp.domain.repository.AppRepository
-import retrofit2.Response
+import kotlinx.coroutines.flow.Flow
 
 class GetEverythingUseCase(private val appRepository: AppRepository) {
 
-    suspend fun execute(query: String): Response<GetArticlesResponse?> {
+    suspend fun execute(query: String): Flow<PagingData<Article>> {
 
-        return appRepository.getEverything(query)
+        return appRepository.getEverythingPager(query)
 
     }
 

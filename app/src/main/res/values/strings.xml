@@ -4,4 +4,6 @@
     <string name="everything">Everything</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image">Image</string>
+    <string name="bookmark">Bookmark</string>
 </resources>

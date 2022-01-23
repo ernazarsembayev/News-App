@@ -1,12 +1,12 @@
 package com.ernazar.newsapp.domain.repository
 
-import com.ernazar.newsapp.data.server.response.getArticlesResponse.GetArticlesResponse
-import retrofit2.Response
+import androidx.paging.PagingData
+import com.ernazar.newsapp.data.model.Article
 
 interface AppRepository {
 
-    suspend fun getEverything(query: String): Response<GetArticlesResponse?>
+    suspend fun getTopHeadlinePager(query: String): kotlinx.coroutines.flow.Flow<PagingData<Article>>
 
-    suspend fun getTopHeadline(query: String): Response<GetArticlesResponse?>
+    suspend fun getEverythingPager(query: String): kotlinx.coroutines.flow.Flow<PagingData<Article>>
 
 }

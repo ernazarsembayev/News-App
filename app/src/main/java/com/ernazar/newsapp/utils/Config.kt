@@ -11,4 +11,9 @@ object Config {
     const val READ_TIMEOUT: Long = 5000
     const val WRITE_TIMEOUT: Long = 5000
 
+    const val MAX_PAGE_SIZE = 15
+    const val DEFAULT_PAGE_SIZE = 15
+
+    const val TOPIC = "Apple"
+
 }

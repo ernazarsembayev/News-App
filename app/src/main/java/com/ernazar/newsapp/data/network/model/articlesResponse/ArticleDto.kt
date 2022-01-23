@@ -1,11 +1,11 @@
-package com.ernazar.newsapp.data.server.response.getArticlesResponse
+package com.ernazar.newsapp.data.network.model.articlesResponse
 
-data class Article(
+data class ArticleDto(
     val author: String?,
     val content: String?,
     val description: String?,
     val publishedAt: String?,
-    val source: Source?,
+    val source: SourceDto?,
     val title: String?,
     val url: String?,
     val urlToImage: String?

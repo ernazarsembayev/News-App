@@ -49,18 +49,20 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // ViewModel and LiveData
-    def lifecycle_version = "2.4.0"
     def lifecycle_arch_version = "1.1.1"
     implementation 'androidx.annotation:annotation:1.3.0'
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$lifecycle_arch_version"
     implementation "android.arch.lifecycle:common-java8:$lifecycle_arch_version"
+
+    // Lifecycle
+    def lifecycle_version = "2.4.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // Room
     def room_version = "2.4.1"
@@ -78,6 +80,14 @@ dependencies {
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
 
+
+    // Paging3
+    def paging_version = "3.1.0"
+    implementation("androidx.paging:paging-runtime-ktx:$paging_version")
+
     // Facebook shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }

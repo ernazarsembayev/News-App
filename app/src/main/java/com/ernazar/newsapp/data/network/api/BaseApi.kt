@@ -1,4 +1,4 @@
-package com.ernazar.newsapp.data.server.api
+package com.ernazar.newsapp.data.network.api
 
 import com.ernazar.newsapp.utils.Config.API_KEY
 import com.ernazar.newsapp.utils.Config.CONNECT_TIMEOUT
