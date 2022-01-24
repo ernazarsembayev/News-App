@@ -9,4 +9,12 @@ interface AppRepository {
 
     suspend fun getEverythingPager(query: String): kotlinx.coroutines.flow.Flow<PagingData<Article>>
 
+//    suspend fun saveArticle(article: Article): Article
+//
+//    suspend fun deleteArticle(article: Article): Article
+//
+//    suspend fun getArticle(articleUrl: String): Article?
+//
+//    suspend fun getBookmarks(): List<Article>
+
 }

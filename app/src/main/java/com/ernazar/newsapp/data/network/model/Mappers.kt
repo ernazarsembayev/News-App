@@ -1,4 +1,4 @@
-package com.ernazar.newsapp.data.network
+package com.ernazar.newsapp.data.network.model
 
 import com.ernazar.newsapp.data.model.Article
 import com.ernazar.newsapp.data.model.Source
@@ -13,7 +13,8 @@ internal fun com.ernazar.newsapp.data.network.model.articlesResponse.ArticleDto.
         author = author,
         urlToImage = urlToImage,
         publishedAt = publishedAt,
-        content = content
+        content = content,
+        isMarked = false
     )
 }
 

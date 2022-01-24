@@ -1,6 +1,7 @@
 package com.ernazar.newsapp.utils.di
 
 import com.ernazar.newsapp.App
+import com.ernazar.newsapp.domain.BookmarkViewModel
 import com.ernazar.newsapp.domain.EverythingViewModel
 import com.ernazar.newsapp.domain.TopHeadlinesViewModel
 import com.ernazar.newsapp.presentation.fragment.EverythingFragment
@@ -18,6 +19,10 @@ val appModule = module {
 
     viewModel {
         TopHeadlinesViewModel(application = get())
+    }
+
+    viewModel {
+        BookmarkViewModel(application = get())
     }
 
     factory {

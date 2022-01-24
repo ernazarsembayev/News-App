@@ -1,5 +1,10 @@
 package com.ernazar.newsapp.data.model
 
+import android.os.Parcelable
+import androidx.room.*
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Article(
     val source: Source?,
     val title: String?,
@@ -9,4 +14,5 @@ data class Article(
     val urlToImage: String?,
     val publishedAt: String?,
     val content: String?,
-)
+    var isMarked: Boolean?,
+) : Parcelable

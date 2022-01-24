@@ -1,5 +1,6 @@
 package com.ernazar.newsapp.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ernazar.newsapp.data.model.Article
 import com.ernazar.newsapp.databinding.FragmentEverythingBinding
 import com.ernazar.newsapp.domain.EverythingViewModel
+import com.ernazar.newsapp.presentation.DetailActivity
 import com.ernazar.newsapp.presentation.adapter.ArticleAdapter
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class EverythingFragment : Fragment(), ArticleAdapter.OnArticleSelect {
+class EverythingFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private val viewModel: EverythingViewModel by sharedViewModel()
 
@@ -43,10 +45,21 @@ class EverythingFragment : Fragment(), ArticleAdapter.OnArticleSelect {
             }
         })
 
+        viewModel.liveDataArticle.observe(viewLifecycleOwner, { article ->
+            val detailActivityIntent = Intent(context, DetailActivity::class.java)
+            detailActivityIntent.putExtra("article", article)
+            startActivity(detailActivityIntent)
+        })
+
         return binding.root
     }
 
-    override fun onSelect(article: Article) {
+
+    override fun onSelectArticle(article: Article) {
         viewModel.articleSelect(article)
+    }
+
+    override fun onClickBookmark(article: Article) {
+        viewModel.articleBookmark(article)
     }
 }

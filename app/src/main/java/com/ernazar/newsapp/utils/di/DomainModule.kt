@@ -1,7 +1,6 @@
 package com.ernazar.newsapp.utils.di
 
-import com.ernazar.newsapp.domain.usecases.GetEverythingUseCase
-import com.ernazar.newsapp.domain.usecases.GetTopHeadlinesUseCase
+import com.ernazar.newsapp.domain.usecases.*
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -12,6 +11,22 @@ val domainModule = module {
 
     factory {
         GetTopHeadlinesUseCase(appRepository =  get())
+    }
+
+    factory {
+        SaveArticleUseCase(appRepository =  get())
+    }
+
+    factory {
+        DeleteArticleUseCase(appRepository =  get())
+    }
+
+    factory {
+        BookmarkUseCase(appRepository =  get())
+    }
+
+    factory {
+        GetBookmarksUseCase(appRepository =  get())
     }
 
 }

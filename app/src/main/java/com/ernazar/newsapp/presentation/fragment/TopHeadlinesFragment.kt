@@ -1,7 +1,7 @@
 package com.ernazar.newsapp.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +10,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ernazar.newsapp.data.model.Article
-import com.ernazar.newsapp.data.network.model.articlesResponse.ArticleDto
 import com.ernazar.newsapp.databinding.FragmentTopHeadlinesBinding
 import com.ernazar.newsapp.domain.TopHeadlinesViewModel
+import com.ernazar.newsapp.presentation.DetailActivity
 import com.ernazar.newsapp.presentation.adapter.ArticleAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class TopHeadlinesFragment : Fragment(), ArticleAdapter.OnArticleSelect {
+class TopHeadlinesFragment : Fragment(), ArticleAdapter.ArticleListener {
 
     private lateinit var binding: FragmentTopHeadlinesBinding
     private val viewModel: TopHeadlinesViewModel by sharedViewModel()
@@ -42,24 +39,27 @@ class TopHeadlinesFragment : Fragment(), ArticleAdapter.OnArticleSelect {
         articleRecyclerView.layoutManager = llm
         articleRecyclerView.adapter = articleAdapter
 
-//        lifecycleScope.launch {
-//            viewModel.news.collectLatest { pagingData ->
-//                articleAdapter.submitData(pagingData)
-//            }
-//        }
-
         viewModel.liveDataArticles.observe(viewLifecycleOwner) {
-            Log.e("paging data observe", it.toString())
             lifecycleScope.launch {
                 articleAdapter.submitData(it)
             }
         }
 
+        viewModel.liveDataArticle.observe(viewLifecycleOwner, { article ->
+            val detailActivityIntent = Intent(context, DetailActivity::class.java)
+            detailActivityIntent.putExtra("article", article)
+            startActivity(detailActivityIntent)
+        })
+
         return binding.root
     }
 
-    override fun onSelect(article: Article) {
+    override fun onSelectArticle(article: Article) {
         viewModel.articleSelect(article)
+    }
+
+    override fun onClickBookmark(article: Article) {
+        viewModel.articleBookmark(article)
     }
 
 }

@@ -5,10 +5,11 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.ernazar.newsapp.data.network.api.ArticleService
 import com.ernazar.newsapp.data.model.Article
+import com.ernazar.newsapp.data.network.model.toArticle
 import com.ernazar.newsapp.utils.Config.MAX_PAGE_SIZE
 import retrofit2.HttpException
 
-class NewsPageSource(
+class TopHeadlinesSource(
     private val articleService: ArticleService,
     private val query: String
 

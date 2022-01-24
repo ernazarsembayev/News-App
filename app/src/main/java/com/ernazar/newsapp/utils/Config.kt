@@ -2,7 +2,7 @@ package com.ernazar.newsapp.utils
 
 object Config {
 
-    const val API_KEY = "e65ee0938a2a43ebb15923b48faed18d"
+    const val API_KEY = "0e16fe0633414566b42c33aed7299f0b"
 
     const val BASE_URL = "https://newsapi.org/"
 
